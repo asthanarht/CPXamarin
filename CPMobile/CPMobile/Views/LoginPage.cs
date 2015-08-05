@@ -37,11 +37,11 @@ namespace CPMobile.Views
 
             layout.Children.Add(label);
 
-            var username = new Entry { Placeholder = "UserName", TextColor=Color.White };
+            var username = new Entry { Placeholder = "UserName", TextColor=Color.Gray };
             username.SetBinding(Entry.TextProperty, LoginViewModel.UsernamePropertyName);
             layout.Children.Add(username);
 
-            var password = new Entry { Placeholder = "Password", IsPassword = true, TextColor = Color.White };
+            var password = new Entry { Placeholder = "Password", IsPassword = true, TextColor = Color.Gray };
             password.SetBinding(Entry.TextProperty, LoginViewModel.PasswordPropertyName);
             layout.Children.Add(password);
 

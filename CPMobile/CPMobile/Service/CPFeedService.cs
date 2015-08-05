@@ -59,7 +59,6 @@ namespace CPMobile.Service
 
                     Settings.AuthToken = responseData.access_token;
                     
-                    var t = "";
                     GetArticleAsync(1);
                     // return the Access Token.
                     //return responseData.ToString();
@@ -137,7 +136,7 @@ namespace CPMobile.Service
                     // parse the response and return the data.
                     string jsonString = await response.Content.ReadAsStringAsync();
                     CPFeed responseData = JsonHelper.Deserialize<CPFeed>(jsonString);
-                    //await BlobCache.LocalMachine.InsertObject<CPFeed>("DefaultArticle", responseData, DateTimeOffset.Now.AddDays(1));
+                    //await BlobCache.LocalMachine.InsertObject<CPFeed>("DefaultForum", responseData, DateTimeOffset.Now.AddDays(1));
                     return responseData;
                 }
             }
@@ -227,7 +226,7 @@ namespace CPMobile.Service
                     MyProfile responseData = JsonHelper.Deserialize<MyProfile>(jsonString);
 
 
-
+                    //await BlobCache.LocalMachine.InsertObject<MyProfile>("DefaultArticle", responseData, DateTimeOffset.Now.AddDays(1));
                     // await dataStorageService.Save_Value("MyProfile", responseData);
 
                     return responseData;
@@ -269,6 +268,8 @@ namespace CPMobile.Service
                     // parse the response and return the data.
                     string jsonString = await response.Content.ReadAsStringAsync();
                     CPFeed responseData = JsonHelper.Deserialize<CPFeed>(jsonString);
+                    await BlobCache.LocalMachine.InsertObject<CPFeed>("MyArticle", responseData, DateTimeOffset.Now.AddDays(3));
+                    
                     return responseData;
                 }
             }
@@ -303,6 +304,8 @@ namespace CPMobile.Service
                     // parse the response and return the data.
                     string jsonString = await response.Content.ReadAsStringAsync();
                     CPFeed responseData = JsonHelper.Deserialize<CPFeed>(jsonString);
+                    await BlobCache.LocalMachine.InsertObject<CPFeed>("MyMessage", responseData, DateTimeOffset.Now.AddDays(3));
+
                     return responseData;
                 }
             }
@@ -338,6 +341,8 @@ namespace CPMobile.Service
                     string jsonString = await response.Content.ReadAsStringAsync();
 
                     CPFeed responseData = JsonHelper.Deserialize<CPFeed>(jsonString);
+                    await BlobCache.LocalMachine.InsertObject<CPFeed>("MyTips", responseData, DateTimeOffset.Now.AddDays(3));
+
                     return responseData;
                 }
             }
@@ -372,6 +377,8 @@ namespace CPMobile.Service
                     // parse the response and return the data.
                     string jsonString = await response.Content.ReadAsStringAsync();
                     CPFeed responseData = JsonHelper.Deserialize<CPFeed>(jsonString);
+                    await BlobCache.LocalMachine.InsertObject<CPFeed>("MyBlogs", responseData, DateTimeOffset.Now.AddDays(3));
+
                     return responseData;
                 }
             }
@@ -406,6 +413,8 @@ namespace CPMobile.Service
                     // parse the response and return the data.
                     string jsonString = await response.Content.ReadAsStringAsync();
                     CPFeed responseData = JsonHelper.Deserialize<CPFeed>(jsonString);
+                    await BlobCache.LocalMachine.InsertObject<CPFeed>("MyComments", responseData, DateTimeOffset.Now.AddDays(3));
+
                     return responseData;
                 }
             }

@@ -21,7 +21,7 @@ namespace CPMobile
             {
                 Text = myProfile.country,
                 FontSize = 12,
-                FontFamily = Device.OnPlatform("HelveticaNeue-Light", "sans-serif-light", null),
+                FontFamily = Device.OnPlatform("HelveticaNeue-Bold", "sans-serif-black", null),
                 XAlign = TextAlignment.Center,
                 TextColor = Color.FromHex("#666")
             };

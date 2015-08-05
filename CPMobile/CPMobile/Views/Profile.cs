@@ -2,15 +2,18 @@
 using CPMobile.Models;
 using ImageCircle.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
+using CPMobile.Helper;
+using CPMobile.ViewModels;
 
 namespace CPMobile.Views
 {
 
     public class Profile : ContentPage
     {
-
+       
         public Profile(MyProfile myProfile = null)
         {
+            
             Title = "Profile";
             NavigationPage.SetHasNavigationBar(this, true);
             BackgroundColor = Color.White;
@@ -38,7 +41,7 @@ namespace CPMobile.Views
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 Source =
-                    new UriImageSource { Uri = new Uri(myProfile.avatar), CacheValidity = TimeSpan.FromDays(30) },
+                    new UriImageSource { Uri = new Uri(myProfile.avatar), CacheValidity = TimeSpan.FromDays(15) },
             };
 
             var dome = new Image()
@@ -47,18 +50,39 @@ namespace CPMobile.Views
                 Source = new FileImageSource() { File = "dome.png" }
             };
 
-            var chatimage = new Image()
+            var twitterimage = new Image()
             {
-                Source = new FileImageSource() { File = "chat.png" }
+                Source = new FileImageSource() { File = "twitter.png" }
             };
 
-            var pindropimage = new Image()
+            var tapGestureTwitterRecognizer = new TapGestureRecognizer();
+            tapGestureTwitterRecognizer.Tapped +=
+                (sender, e) =>
+                {
+                    var profile = new WebViewPage("Twitter", myProfile.twitterName.TwitterUrl());
+                    Navigation.PushAsync(profile);
+                };
+            twitterimage.GestureRecognizers.Add(tapGestureTwitterRecognizer);
+
+            var linkedinimage = new Image()
             {
-                Source = new FileImageSource() { File = "pindrop.png" }
+                Source = new FileImageSource() { File = "linkedin.png" }
             };
+
+            var tapGestureLinkedInRecognizer = new TapGestureRecognizer();
+            tapGestureLinkedInRecognizer.Tapped +=
+                (sender, e) =>
+                {
+                    var profile = new WebViewPage("LinkedIn", myProfile.linkedInProfile);
+                    Navigation.PushAsync(profile);
+                };
+            linkedinimage.GestureRecognizers.Add(tapGestureLinkedInRecognizer);
+
 
             var details = new DetailsView(myProfile);
-            var slideshow = new ShowProfileDetailsView(myProfile);
+            var slideshow = new ShowProfileDetailsView();
+
+          
 
             RelativeLayout relativeLayout = new RelativeLayout()
             {
@@ -108,7 +132,7 @@ namespace CPMobile.Views
             );
 
             relativeLayout.Children.Add(
-                chatimage,
+                twitterimage,
                 Constraint.RelativeToParent((parent) =>
                 {
                     return parent.Width * .05;
@@ -128,7 +152,7 @@ namespace CPMobile.Views
             );
 
             relativeLayout.Children.Add(
-                pindropimage,
+                linkedinimage,
                 Constraint.RelativeToParent((parent) =>
                 {
                     return parent.Width * .95 - (parent.Width * .15);

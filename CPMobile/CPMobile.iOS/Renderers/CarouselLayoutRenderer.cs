@@ -39,7 +39,7 @@ namespace CustomLayouts.iOS.Renderers
 		}
 
 		void ElementPropertyChanged(object sender, PropertyChangedEventArgs e) {
-			if (e.PropertyName == CarouselLayout.SelectedIndexProperty.PropertyName && !Dragging) {
+			if (e.PropertyName == CarouselLayout.SelectedIndexProperty.PropertyName) {
 				ScrollToSelection (false);
 			}
 		}

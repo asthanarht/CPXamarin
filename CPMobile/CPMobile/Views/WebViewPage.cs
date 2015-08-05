@@ -13,6 +13,7 @@ namespace CPMobile.Views
         public WebViewPage(string title,string url)
         {
             NavigationPage.SetHasNavigationBar(this, true);
+            NavigationPage.SetBackButtonTitle(this, title);
             this.Title = title;
             WebView webView = new WebView
             {

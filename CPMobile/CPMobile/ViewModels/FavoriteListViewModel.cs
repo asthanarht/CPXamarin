@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CPMobile.Service;
 using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace CPMobile.ViewModels
 {
@@ -15,8 +16,9 @@ namespace CPMobile.ViewModels
         private Command getFavoriteListCommand;
         public ObservableCollection<Item> FavList { get; set; }
 
-        public FavoriteListViewModel()
+        public FavoriteListViewModel(Page page):base(page)
         {
+           
             FavList = new ObservableCollection<Item>();
         }
         public Command GetFavoriteListCommand
@@ -28,7 +30,25 @@ namespace CPMobile.ViewModels
             }
         }
 
+        private ICommand _deleteItemCommand;
+         public const string DeleteCommandPropertyName = "DeleteCommand";
+        public ICommand DeleteItemCommand
+        {
+            get
+            {
+                if (_deleteItemCommand == null)
+                {
+                    _deleteItemCommand = new Command(async () => await ExecuteGetFavCommand(), () => { return !IsBusy; });
+                }
 
+                return _deleteItemCommand;
+            }
+            //set
+            //{
+            //    SetProperty(ref _deleteItemCommand, value, DeleteCommandPropertyName);
+            //}
+           
+        }
 
         private async Task ExecuteGetFavCommand()
         {

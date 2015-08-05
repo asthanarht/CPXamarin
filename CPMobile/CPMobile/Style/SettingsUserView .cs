@@ -31,7 +31,7 @@ namespace CPMobile
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 Source =
-                    new UriImageSource { Uri = new Uri("http://bit.ly/1s07h2W"), CacheValidity = TimeSpan.FromDays(30) },
+                    new UriImageSource { Uri = new Uri("http://bit.ly/1s07h2W"),  CacheValidity = TimeSpan.FromDays(15) },
             };
 
             var label = new Label()

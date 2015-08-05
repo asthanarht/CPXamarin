@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using CPMobile.Helper;
 
 namespace CPMobile.Views
 {
@@ -19,10 +20,16 @@ namespace CPMobile.Views
 
             this.rootPage = rootPage;
 
-            var logoutButton = new Button { Text = "Logout" };
+            var logoutButton = new Button { Text = "Logout", TextColor=Color.White };
             logoutButton.Clicked += (sender, e) =>
             {
-                App.Current.LogOut();
+                Settings.AuthLoginToken = "";
+                
+                Navigation.PushModalAsync(new LoginPage());
+
+                //Special Handel for Android Back button
+                if (Device.OS == TargetPlatform.Android)
+                Application.Current.MainPage = new LoginPage();
             };
             var layout = new StackLayout
             {
@@ -73,7 +80,7 @@ namespace CPMobile.Views
             tapGestureRecognizer.Tapped +=
                 (sender, e) =>
                 {
-                    NavigationPage profile = new NavigationPage(new Profile(settingView.profileViewModel.myProfile)) { BarBackgroundColor = App.BrandColor };
+                    NavigationPage profile = new NavigationPage(new Profile(settingView.profileViewModel.myProfile)) { BarBackgroundColor = App.BrandColor,BarTextColor = Color.White };
                     rootPage.Detail = profile;
                     rootPage.IsPresented = false;
                 };
@@ -81,7 +88,7 @@ namespace CPMobile.Views
  
         }
 
-        NavigationPage home, favorite, favorites;
+        NavigationPage home, About, favorites;
         public void Selected(string item)
         {
 
@@ -96,14 +103,9 @@ namespace CPMobile.Views
                     favorites = new NavigationPage(new FavoriteListPage()) { BarBackgroundColor = App.BrandColor, BarTextColor = Color.White };
                     rootPage.Detail = favorites;
                     break;
-                case "Room Plan":
-                    rootPage.Detail = new NavigationPage(new RootPage());// { BarBackgroundColor = App.NavTint };
-                    break;
-                case "Contact":
-                    rootPage.Detail = new NavigationPage(new RootPage());// { BarBackgroundColor = App.NavTint };
-                    break;
                 case "About":
-                    rootPage.Detail = new NavigationPage(new RootPage());// { BarBackgroundColor = App.NavTint };
+                    About = new NavigationPage(new AboutPage()) { BarBackgroundColor = App.BrandColor, BarTextColor = Color.White };
+                    rootPage.Detail = About;
                     break;
             };
             rootPage.IsPresented = false;  // close the slide-out

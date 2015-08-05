@@ -7,13 +7,8 @@ namespace CPMobile.Views
     {
         public ForumListPage()
         {
-            var searchBar = new SearchBar
-            {
-                Placeholder = "Search Forum ",
-                BackgroundColor = Color.White,
-                CancelButtonColor = App.BrandColor,
-            };
-            var vetlist = new ListView
+           
+            var forumlist = new ListView
             {
                 HasUnevenRows = false,
                 ItemTemplate = new DataTemplate(typeof(CustomListStyle)),
@@ -22,16 +17,15 @@ namespace CPMobile.Views
                 RowHeight = 50,
             };
 
-            //vetlist.SetBinding<ArticlePageViewModel>();
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.White,
-                Children = { searchBar, vetlist }
+                Children = { forumlist }
             };
 
-              vetlist.ItemSelected += (sender, e) =>
+              forumlist.ItemSelected += (sender, e) =>
                 {
                      var selectedObject = e.SelectedItem as CPMobile.Models.ForumType;
 

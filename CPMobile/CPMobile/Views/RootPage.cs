@@ -13,18 +13,6 @@ namespace CPMobile.Views
             Detail = new NavigationPage(new MainListPage() ){  BarBackgroundColor = App.BrandColor, BarTextColor= Color.White };
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            // By returning TRUE and not calling base we cancel the hardware back button :)
-            //if( App.Current.MainPage)
-            //{
-            //    return true;
-            //}
-
-            return true;
-
-        }
-
         //void NavigateTo(MenuItem menu)
         //{
         //    if (menu == null)

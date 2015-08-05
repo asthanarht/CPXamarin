@@ -17,39 +17,57 @@ namespace CPMobile.Views
         {
             Title = "Favorite";
             NavigationPage.SetHasNavigationBar(this, true);
-            BindingContext=favViewModel = new FavoriteListViewModel();
-            favViewModel.GetFavoriteListCommand.Execute(null);
+            BindingContext= favViewModel = new FavoriteListViewModel(this);
+           // favViewModel.GetFavoriteListCommand.Execute(null);
             var searchBar = new SearchBar
             {
-                Placeholder = "Search Forum ",
+                Placeholder = "Search Favorite ",
                 BackgroundColor = Color.White,
                 CancelButtonColor = App.BrandColor,
             };
-            var vetlist = new ListView
+            var favlist = new ListView
             {
                 HasUnevenRows = false,
-                ItemTemplate = new DataTemplate(typeof(CustomListStyle)),
+                ItemTemplate = new DataTemplate(typeof(CPFavList)),
                 ItemsSource = favViewModel.FavList,
                 BackgroundColor = Color.White,
-                RowHeight = 50,
+                RowHeight = 80,
             };
 
+            //favlist.SetBinding(ListView.ItemsSourceProperty, "favlist");
             //vetlist.SetBinding<ArticlePageViewModel>();
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.White,
-                Children = { searchBar, vetlist }
+                Children = { searchBar, favlist }
             };
 
-            vetlist.ItemSelected += (sender, e) =>
+            favlist.ItemSelected += (sender, e) =>
             {
                 var selectedObject = e.SelectedItem as CPMobile.Models.Item;
 
                 var favPage = new WebViewPage(selectedObject.title, selectedObject.websiteLink.HttpUrlFix());
                 Navigation.PushAsync(favPage);
             };
+
+            //MessagingCenter.Subscribe(this, "DeleteThis", async (string id) =>
+            //{
+            //    if (String.IsNullOrEmpty(id)) return;
+            //    favViewModel.GetFavoriteListCommand.Execute(null); 
+            //});
+           // favlist.SetBinding(MenuItem.CommandProperty, favViewModel.DeleteItemCommand);
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (favViewModel.FavList.Count > 0 || favViewModel.IsBusy)
+                return;
+
+            favViewModel.GetFavoriteListCommand.Execute(null); 
         }
     }
     

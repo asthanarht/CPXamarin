@@ -44,6 +44,7 @@
     <Compile Include="Helper\Settings.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\AuthorProfileDataCounts.cs" />
     <Compile Include="Models\AuthorReputation.cs" />
     <Compile Include="Models\CPAuthToken.cs" />
     <Compile Include="Models\ForumType.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Service\CPFeedService.cs" />
     <Compile Include="Service\FavoriteDataService.cs" />
     <Compile Include="Style\AppStyle.cs" />
+    <Compile Include="Style\CPFavList.cs" />
     <Compile Include="Style\CPListCell.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -90,8 +92,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\ShowProfileDetailsViewModel.cs" />
     <Compile Include="ViewModels\SwitcherPageViewModel.cs" />
     <Compile Include="ViewModels\TabbedPageViewModel.cs" />
+    <Compile Include="Views\AboutPage.cs" />
     <Compile Include="Views\ArticleListPage.cs" />
     <Compile Include="Views\AuthorArticlePage.cs" />
     <Compile Include="Views\FavoriteListPage.cs" />

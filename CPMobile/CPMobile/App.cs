@@ -2,6 +2,7 @@
 using CPMobile.Models;
 using CPMobile.Views;
 using Xamarin.Forms;
+using CPMobile.Helper;
 
 namespace CPMobile
 {
@@ -17,7 +18,13 @@ namespace CPMobile
             //Current = this;
            // MainPage = new Profile();
             BlobCache.ApplicationName = "CPMobile";
-            MainPage = new LoginPage();
+
+            var authLoginToken = Settings.AuthLoginToken;
+
+            if (string.IsNullOrEmpty(authLoginToken))
+                MainPage = new LoginPage();
+            else
+                MainPage = new RootPage();
             //var isLoggedIn = Properties.ContainsKey("IsLoggedIn")?(bool)Properties ["IsLoggedIn"]:false;
 
             // we remember if they're logged in, and only display the login page if they're not

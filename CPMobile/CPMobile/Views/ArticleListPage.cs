@@ -17,7 +17,7 @@ namespace CPMobile.Views
             };
             activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
-            var vetlist = new ListView
+            var genralArticlelist = new ListView
             {
                 HasUnevenRows = false,
                 ItemTemplate = new DataTemplate(typeof(CPListCell)),
@@ -32,10 +32,10 @@ namespace CPMobile.Views
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.White,
-                Children = { vetlist  }
+                Children = { genralArticlelist  }
             };
 
-             vetlist.ItemSelected += (sender, e) =>
+             genralArticlelist.ItemSelected += (sender, e) =>
              {
                  var selectedObject = e.SelectedItem as CPMobile.Models.Item;
 

@@ -1,32 +1,43 @@
 ﻿using CPMobile.Models;
 using CPMobile.Views;
 using Xamarin.Forms;
+using System.Reactive.Linq;
+using System.Threading;
+using Akavache;
+using CPMobile.ViewModels;
 
 namespace CPMobile
 {
     public class ShowProfileDetailsView : ContentView
     {
-        public ShowProfileDetailsView(MyProfile myProfile = null)
+        ShowProfileDetailsViewModel viewModel;
+        public ShowProfileDetailsView()
         {
+            BindingContext = viewModel = new ShowProfileDetailsViewModel();
+            viewModel.GetProfileDetailsCommand.Execute(null);
             HeightRequest = 200;
 
             var article = new Label()
             {
-                Text = "Article",
+                Text = "Articles",
                 FontSize = 20,
                 FontFamily = Device.OnPlatform("HelveticaNeue-Bold", "sans-serif-black", null),
                 XAlign = TextAlignment.Center,
                 TextColor = Color.White
             };
 
+           
+                                                                                          
             var articleCount = new Label()
             {
-                Text = "4",
+                Text = "",
                 FontSize = 14,
                 FontFamily = Device.OnPlatform("HelveticaNeue", "sans-serif", null),
                 XAlign = TextAlignment.Center,
                 TextColor = Color.White
             };
+
+            articleCount.SetBinding(Label.TextProperty, "AuthorArticles");
 
             var stackArticle = new StackLayout()
             {
@@ -57,12 +68,14 @@ namespace CPMobile
 
             var techBlogCount = new Label()
             {
-                Text = "40",
+                Text = "",
                 FontSize = 14,
                 FontFamily = Device.OnPlatform("HelveticaNeue", "sans-serif", null),
                 XAlign = TextAlignment.Center,
                 TextColor = Color.White
             };
+
+            techBlogCount.SetBinding(Label.TextProperty, "AuthorBlogs");
 
             var stackBlog = new StackLayout()
             {
@@ -95,7 +108,7 @@ namespace CPMobile
 
             var messageCount = new Label()
             {
-                Text = "184",
+                Text = "",
                 FontSize = 14,
                 FontFamily = Device.OnPlatform("HelveticaNeue", "sans-serif", null),
                 XAlign = TextAlignment.Center,
@@ -111,6 +124,9 @@ namespace CPMobile
 					messageCount,
 				}
             };
+
+            messageCount.SetBinding(Label.TextProperty, "AuthorMessages");
+
 
             var tapGestureMessageRecognizer = new TapGestureRecognizer();
             tapGestureMessageRecognizer.Tapped +=
@@ -132,12 +148,14 @@ namespace CPMobile
 
             var tipCount = new Label()
             {
-                Text = "24",
+                Text = "",
                 FontSize = 14,
                 FontFamily = Device.OnPlatform("HelveticaNeue", "sans-serif", null),
                 XAlign = TextAlignment.Center,
                 TextColor = Color.White
             };
+
+            tipCount.SetBinding(Label.TextProperty, "AuthorTips");
 
             var stackTip = new StackLayout()
             {
@@ -169,12 +187,13 @@ namespace CPMobile
 
             var commentsCount = new Label()
             {
-                Text = "84",
+                Text = "",
                 FontSize = 14,
                 FontFamily = Device.OnPlatform("HelveticaNeue", "sans-serif", null),
                 XAlign = TextAlignment.Center,
                 TextColor = Color.White
             };
+            commentsCount.SetBinding(Label.TextProperty, "AuthorComments");
 
             var stackComments = new StackLayout()
             {

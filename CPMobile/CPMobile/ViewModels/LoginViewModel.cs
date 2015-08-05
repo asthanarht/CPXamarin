@@ -40,7 +40,7 @@ namespace CPMobile.ViewModels
 
             try
             {
-                isLoginSuccess = await cpFeeds.GetAccessToken("asthanarht@gmail.com", "#include");
+                isLoginSuccess = await cpFeeds.GetAccessToken(this.UserName, this.Password);
             }
             catch(Exception ex)
             {
@@ -56,6 +56,8 @@ namespace CPMobile.ViewModels
             if (isLoginSuccess)
             {
                 await page.Navigation.PushModalAsync(new RootPage());
+                if(Device.OS == TargetPlatform.Android)
+                Application.Current.MainPage = new RootPage();
             }
             else
             {

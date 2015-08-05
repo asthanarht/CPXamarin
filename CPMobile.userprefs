@@ -1,14 +1,14 @@
 ﻿<Properties StartupItem="CPMobile\CPMobile.Droid\CPMobile.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.0351872121614ed0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CPMobile\CPMobile.Droid\Renderers\RootNavigationRenderer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CPMobile\CPMobile\Views\Profile.cs">
     <Files>
       <File FileName="CPMobile\CPMobile\Views\LoginPage.cs" Line="1" Column="1" />
       <File FileName="CPMobile\CPMobile\App.cs" Line="1" Column="1" />
       <File FileName="r:\git\CodeProject\CPMobile\CPMobile\CPMobile\Views\MenuPage.cs" Line="1" Column="1" />
       <File FileName="r:\git\CodeProject\CPMobile\CPMobile\CPMobile\Views\RootPage.cs" Line="1" Column="1" />
       <File FileName="CPMobile\CPMobile\Views\MainListPage.cs" Line="1" Column="1" />
-      <File FileName="CPMobile\CPMobile\Views\MasterPage.cs" Line="1" Column="1" />
-      <File FileName="CPMobile\CPMobile.Droid\Renderers\RootNavigationRenderer.cs" Line="4" Column="22" />
+      <File FileName="CPMobile\CPMobile.Droid\Renderers\RootNavigationRenderer.cs" Line="1" Column="1" />
+      <File FileName="CPMobile\CPMobile\Views\Profile.cs" Line="45" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -21,7 +21,7 @@ namespace CPMobile.Views
             };
             activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
-            var vetlist = new ListView
+            var authorArticlelist = new ListView
             {
                 HasUnevenRows = false,
                 ItemTemplate = new DataTemplate(typeof(CPListCell)),
@@ -30,16 +30,15 @@ namespace CPMobile.Views
                 RowHeight = 120,
             };
 
-            //vetlist.SetBinding<ArticlePageViewModel>();
             Content = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.White,
-                Children = { vetlist }
+                Children = { authorArticlelist }
             };
 
-            vetlist.ItemSelected += (sender, e) =>
+            authorArticlelist.ItemSelected += (sender, e) =>
             {
                 var selectedObject = e.SelectedItem as CPMobile.Models.Item;
 

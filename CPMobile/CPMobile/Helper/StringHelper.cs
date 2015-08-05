@@ -43,5 +43,11 @@ namespace CPMobile.Helper
             }
             return offset;
         }
+
+        public static string TwitterUrl(this string value)
+        {
+                return string.Format(@"http:\\twitter.com\{0}", value);
+            
+        }
     }
 }

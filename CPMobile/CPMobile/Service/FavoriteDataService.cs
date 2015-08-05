@@ -13,7 +13,7 @@ namespace CPMobile.Service
     {
         private static List<Item> favListItems;
 
-        public static async void SaveListItems(Item favItem)
+        public static async void SaveListItems(Item favItem=null)
         {
 
             favListItems = await GetFavListHistory();
@@ -38,6 +38,13 @@ namespace CPMobile.Service
             {
                 return null;
             }
+        }
+
+        public static async void DeleteFavorite(Item item)
+        {
+            favListItems = await GetFavListHistory();
+            favListItems.RemoveAll(i => i.id == item.id);
+            await BlobCache.LocalMachine.InsertObject<List<Item>>("Favorite", favListItems, DateTimeOffset.Now.AddDays(30));
         }
 
        
