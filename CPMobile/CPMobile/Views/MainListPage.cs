@@ -16,7 +16,6 @@ namespace CPMobile.Views
         private TabbedPageViewModel _viewModel;
         CarouselLayout.IndicatorStyleEnum _indicatorStyle;
 
-        SwitcherPageViewModel viewModel;
         public MainListPage()
         {
        
@@ -107,7 +106,8 @@ namespace CPMobile.Views
         {
             var pagerIndicator = new PagerIndicatorTabs() { HorizontalOptions = LayoutOptions.CenterAndExpand };
             pagerIndicator.RowDefinitions.Add(new RowDefinition() { Height = 50 });
-            //pagerIndicator.SetBinding(PagerIndicatorTabs.ColumnDefinitionsProperty, "Pages", BindingMode.Default);
+            pagerIndicator.ColumnDefinitions.Add(new ColumnDefinition() {Width = new GridLength(1, GridUnitType.Star) });
+            //pagerIndicator.SetBinding(Grid.ColumnDefinitionsProperty, "Pages", BindingMode.Default, new SpacingConverter());
             pagerIndicator.SetBinding(PagerIndicatorTabs.ItemsSourceProperty, "Pages");
             pagerIndicator.SetBinding(PagerIndicatorTabs.SelectedItemProperty, "CurrentPage");
 
