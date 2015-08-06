@@ -107,7 +107,7 @@ namespace CPMobile.Views
         {
             var pagerIndicator = new PagerIndicatorTabs() { HorizontalOptions = LayoutOptions.CenterAndExpand };
             pagerIndicator.RowDefinitions.Add(new RowDefinition() { Height = 50 });
-            pagerIndicator.SetBinding(PagerIndicatorTabs.ColumnDefinitionsProperty, "Pages", BindingMode.Default, new SpacingConverter());
+            //pagerIndicator.SetBinding(PagerIndicatorTabs.ColumnDefinitionsProperty, "Pages", BindingMode.Default);
             pagerIndicator.SetBinding(PagerIndicatorTabs.ItemsSourceProperty, "Pages");
             pagerIndicator.SetBinding(PagerIndicatorTabs.SelectedItemProperty, "CurrentPage");
 

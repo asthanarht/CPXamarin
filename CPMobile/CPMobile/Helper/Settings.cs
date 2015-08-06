@@ -1,4 +1,4 @@
-﻿using Refractored.Xam.Settings;
+﻿
 using Refractored.Xam.Settings.Abstractions;
 
 namespace CPMobile.Helper
@@ -7,7 +7,7 @@ namespace CPMobile.Helper
     {
         public static ISettings AppSettings
         {
-            get { return CrossSettings.Current; }
+            get { return Refractored.Xam.Settings.CrossSettings.Current; }
         }
 
         private static string authGenralToken = string.Empty;

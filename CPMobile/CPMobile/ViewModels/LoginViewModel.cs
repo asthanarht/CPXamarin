@@ -40,6 +40,7 @@ namespace CPMobile.ViewModels
 
             try
             {
+
                 isLoginSuccess = await cpFeeds.GetAccessToken(this.UserName, this.Password);
             }
             catch(Exception ex)

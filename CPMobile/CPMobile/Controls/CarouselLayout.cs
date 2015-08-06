@@ -31,14 +31,14 @@ namespace CustomLayouts.Controls
             };
 
             Content = _stack;
-            Device.StartTimer(new TimeSpan(300), () =>
-            {
+            //Device.StartTimer(new TimeSpan(300), () =>
+            //{
 
-                SelectedItem = SelectedIndex > -1 ? Children[SelectedIndex].BindingContext : null;
+            //    SelectedItem = SelectedIndex > -1 ? Children[SelectedIndex].BindingContext : null;
 
-                return true;
+            //    return true;
 
-            });
+            //});
             //_selectedItemTimer = new Timer
             //{
             //    AutoReset = false,

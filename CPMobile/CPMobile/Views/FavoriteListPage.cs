@@ -25,6 +25,8 @@ namespace CPMobile.Views
                 BackgroundColor = Color.White,
                 CancelButtonColor = App.BrandColor,
             };
+
+          
             var favlist = new ListView
             {
                 HasUnevenRows = false,
@@ -34,6 +36,13 @@ namespace CPMobile.Views
                 RowHeight = 80,
             };
 
+           searchBar.TextChanged += (sender, e) => FilterLocations(favlist,searchBar.Text);
+            searchBar.SearchButtonPressed += (sender, e) =>
+            {
+                
+                FilterLocations(favlist,searchBar.Text);
+                
+            };
             //favlist.SetBinding(ListView.ItemsSourceProperty, "favlist");
             //vetlist.SetBinding<ArticlePageViewModel>();
             Content = new StackLayout
@@ -50,8 +59,12 @@ namespace CPMobile.Views
 
                 var favPage = new WebViewPage(selectedObject.title, selectedObject.websiteLink.HttpUrlFix());
                 Navigation.PushAsync(favPage);
+                
+               
             };
 
+            
+            
             //MessagingCenter.Subscribe(this, "DeleteThis", async (string id) =>
             //{
             //    if (String.IsNullOrEmpty(id)) return;
@@ -59,6 +72,22 @@ namespace CPMobile.Views
             //});
            // favlist.SetBinding(MenuItem.CommandProperty, favViewModel.DeleteItemCommand);
 
+        }
+
+        public void FilterLocations(ListView lv, string filter)
+        {
+            lv.BeginRefresh();
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                lv.ItemsSource = favViewModel.FavList;
+            }
+            else
+            {
+                lv.ItemsSource = favViewModel.FavList
+                        .Where(x => x.title.ToLower()
+                            .Contains(filter.ToLower()));
+            }
+            lv.EndRefresh();
         }
 
         protected override void OnAppearing()

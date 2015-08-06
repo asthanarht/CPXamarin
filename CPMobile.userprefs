@@ -1,6 +1,6 @@
 ﻿<Properties StartupItem="CPMobile\CPMobile.Droid\CPMobile.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.0351872121614ed0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CPMobile\CPMobile\Views\Profile.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CPMobile\CPMobile\ViewModels\LoginViewModel.cs">
     <Files>
       <File FileName="CPMobile\CPMobile\Views\LoginPage.cs" Line="1" Column="1" />
       <File FileName="CPMobile\CPMobile\App.cs" Line="1" Column="1" />
@@ -9,10 +9,17 @@
       <File FileName="CPMobile\CPMobile\Views\MainListPage.cs" Line="1" Column="1" />
       <File FileName="CPMobile\CPMobile.Droid\Renderers\RootNavigationRenderer.cs" Line="1" Column="1" />
       <File FileName="CPMobile\CPMobile\Views\Profile.cs" Line="45" Column="4" />
+      <File FileName="CPMobile\CPMobile.Droid\obj\Release\android\AndroidManifest.xml" Line="3" Column="1" />
+      <File FileName="CPMobile\CPMobile\ViewModels\LoginViewModel.cs" Line="65" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="R:\git\sample\Vet\CPMobile\CPMobile\CPMobile\ViewModels\LoginViewModel.cs" line="44" column="1" />
+      <Breakpoint file="R:\git\sample\Vet\CPMobile\CPMobile\CPMobile\ViewModels\LoginViewModel.cs" line="38" column="1" />
+      <Breakpoint file="R:\git\sample\Vet\CPMobile\CPMobile\CPMobile\ViewModels\LoginViewModel.cs" line="65" column="1" />
+      <Breakpoint file="R:\git\sample\Vet\CPMobile\CPMobile\CPMobile\ViewModels\LoginViewModel.cs" line="34" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
